@@ -51,9 +51,9 @@ namespace SellingLaptop.Controllers
                 }
                 return View(userRegistrationModel);
             }
-            //Change role Visitor
-            //await userManager.AddToRoleAsync(user, "Visitor");
-            await userManager.AddToRoleAsync(user, "Administrator");
+            //Change role
+            await userManager.AddToRoleAsync(user, "Visitor");
+            //await userManager.AddToRoleAsync(user, "Administrator");
             return RedirectToAction(nameof(AccountController.Login), "Account");
         }
         public IActionResult Login(string returnUrl = null)
