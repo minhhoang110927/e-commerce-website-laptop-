@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SellingLaptop.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        if (User.IsInRole("Administrator"))
+        {
+            <div class="row">
+                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Admin" asp-action="Index" title="Welcome">Welcome @User.Identity.Name!</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout" title="Logout">Logout</a>
+            </div>
+        }
+        
+    }
+</ul>
+

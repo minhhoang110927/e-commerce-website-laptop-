@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "MyOrders";
+}
+
+<h4>My Orders</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                OrderDate
+            </th>
+            <th>
+                CustomerName
+            </th>
+            <th>
+                CustomerPhone
+            </th>
+            <th>
+                CustomerAddress
+            </th>
+            <th>
+                Total
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.OrdersList)
+        {
+        <tr>
+            <td>
+                @item.OrderDate
+            </td>
+            <td>
+                @item.CustomerName
+            </td>
+            <td>
+                @item.CustomerPhone
+            </td>
+            <td>
+                @item.CustomerAddress
+            </td>
+            <td>
+                @item.Total
+            </td>
+            <td>
+                @item.Status
+            </td>
+            <td>
+                <a asp-action="OrdersDetail" asp-route-id="@item.OrderId">Details</a>
+                
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

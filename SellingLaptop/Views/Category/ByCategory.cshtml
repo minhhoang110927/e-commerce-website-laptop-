@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = @ViewBag.CategoryName;
+}
+
+<h4>Product in @ViewBag.CategoryName</h4>
+<div class="row">
+    @foreach (var product in ViewBag.ByCategory)
+    {
+        <div class="col-md-3">
+            <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.ProductId" asp-route-name="@product.ProductName">@product.ProductName</a>
+        </div>
+    }
+</div>

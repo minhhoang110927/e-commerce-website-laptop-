@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h4>List Orders</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                OrderDate
+            </th>
+            <th>
+                CustomerName
+            </th>
+            <th>
+                CustomerPhone
+            </th>
+            <th>
+                CustomerAddress
+            </th>
+            <th>
+                Total
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.OrdersList)
+        {
+            <tr>
+                <td>
+                    @item.OrderDate
+                </td>
+                <td>
+                    @item.CustomerName
+                </td>
+                <td>
+                    @item.CustomerPhone
+                </td>
+                <td>
+                    @item.CustomerAddress
+                </td>
+                <td>
+                    @item.Total
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    @if (@item.Status != Status.delivered)
+                    {
+                        <a asp-action="ChangeStatus" asp-route-id="@item.OrderId" >Change Status |</a>
+                    }
+                    <a asp-action="Detail" asp-route-id="@item.OrderId">Details</a>|
+                    <a asp-action="DeleteOrders" asp-route-id="@item.OrderId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

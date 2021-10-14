@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Category List";
+}
+
+<h4>Category List</h4>
+<div class="row">
+    @foreach (var category in ViewBag.Categories)
+            {
+                <div class="col-md-3">
+                    <a asp-controller="Category" asp-action="ByCategory" asp-route-id="@category.CategoryId" asp-route-name="@category.CategoryName">@category.CategoryName</a>
+                </div>
+            }
+</div>

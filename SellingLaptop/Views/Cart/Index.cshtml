@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+}
+@model SellingLaptop.Models.CartDetail
+
+<h4>Cart</h4>
+<form>
+    <table>
+
+        @if (ViewBag.Total == 0)
+        {
+            <a>No item in cart</a>
+        }
+        else
+        {
+            <tr>
+                <th>Laptop Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+            @foreach (var item in @ViewBag.listCartDetail)
+            {
+                <tr>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Product.ProductImage</td>
+                    <td>@item.Product.ProductPrice</td>
+                    <td>
+                        <a asp-action="RemoveItem" asp-route-id="@item.CartDetailId">Delete</a>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>Sum</td>
+                <td>@ViewBag.Total</td>
+            </tr>
+            <a asp-action="Order">Order</a>
+        }
+    </table>
+
+</form>
+<br>
+<a asp-controller="Product" asp-action="Index">
+    Continue Shopping
+</a>
